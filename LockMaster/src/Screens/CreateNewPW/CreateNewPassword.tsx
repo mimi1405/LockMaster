@@ -18,29 +18,28 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
     setGenerated(false);
   }, [generated]);
 
-  const { createPassword } = useCNP();
+  const { generatePassword } = useCNP();
 
   const [length, setLength] = useState<number>(Number);
 
   const [pw, setPw] = useState("");
 
   const createPw = () => {
-    let password = createPassword(
-      allSmallChecked,
-      firstLetterBig,
-      withSpecialChar,
-      length
+    let password = generatePassword(
+      length,
+      withBigLetters,
+      withSmallLetters,
+      withNumbers,
+      withSpecialChar
     );
     setPw(password);
     setGenerated(true);
   };
 
-  const [disableFirstLetterBig, setDisableFirstLetterBig] = useState(false);
-  const [disableAllSmall, setDisableAllSmall] = useState(false);
-
-  const [allSmallChecked, setAllSmallChecked] = useState(false);
-  const [firstLetterBig, setfirstLetterBig] = useState(false);
+  const [withSmallLetters, setWithSmallLetters] = useState(false);
+  const [withBigLetters, setWithBigLetters] = useState(false);
   const [withSpecialChar, setWithSpecialChar] = useState(false);
+  const [withNumbers, setWithNumbers] = useState(false);
 
   const toggleSpecialChar = () => {
     setWithSpecialChar(!withSpecialChar);
@@ -50,30 +49,27 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
   };
 
   const toggleFirstLetterBig = () => {
-    setfirstLetterBig(!firstLetterBig);
+    setWithBigLetters(!withBigLetters);
   };
 
   const onChangeFirstLetterBig = (e: CheckboxChangeEvent) => {
-    toggleDisableAllSmall();
     toggleFirstLetterBig();
-    console.log(firstLetterBig);
   };
 
   const toggleAllSmallChecked = () => {
-    setAllSmallChecked(!allSmallChecked);
-  };
-
-  const toggleDisableAllSmall = () => {
-    setDisableAllSmall(!disableAllSmall);
-  };
-
-  const toggleDisableFirstLetterBig = () => {
-    setDisableFirstLetterBig(!disableFirstLetterBig);
+    setWithSmallLetters(!withSmallLetters);
   };
 
   const onChangeAllSmall = (e: CheckboxChangeEvent) => {
-    toggleDisableFirstLetterBig();
     toggleAllSmallChecked();
+  };
+
+  const toggleNumbersChecked = () => {
+    setWithNumbers(!withNumbers);
+  };
+
+  const onChangeNumbers = (e: CheckboxChangeEvent) => {
+    toggleNumbersChecked();
   };
 
   return (
@@ -89,29 +85,24 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
           <h1>Create new password</h1>
         </div>
         <div className="bottom">
-          <p>{length}</p>
+          <h2>{pw}</h2>
+          <p style={{ fontSize: "xx-small" }}>3-20</p>
           <NumberInput min={3} max={20} onChange={setLength} />
-          <p>*Includes:</p>
+          <FcSettings size={30} />
+
           <div className="checks">
             <Checkbox onChange={onChangeSpecialChar}>
-              special character
+              special characters
             </Checkbox>
-            <Checkbox
-              disabled={disableFirstLetterBig}
-              onChange={onChangeFirstLetterBig}
-            >
-              first letter big
-            </Checkbox>
-            <Checkbox disabled={disableAllSmall} onChange={onChangeAllSmall}>
-              all small
-            </Checkbox>
+            <Checkbox onChange={onChangeFirstLetterBig}>big letters</Checkbox>
+            <Checkbox onChange={onChangeAllSmall}>small letters</Checkbox>
+            <Checkbox onChange={onChangeNumbers}>numbers</Checkbox>
           </div>
 
-          <p>{pw}</p>
-
           <button onClick={() => createPw()} className="generate_btn">
-            generate
+            generate password
           </button>
+          <button className="generate_btn">save</button>
         </div>
       </div>
     </>

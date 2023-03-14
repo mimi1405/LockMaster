@@ -1,54 +1,10 @@
 import React from "react";
 import bcryptjs from "bcryptjs-react";
 import * as CryptoJs from "crypto-js";
+import { createDir, BaseDirectory } from "@tauri-apps/api/fs";
 
 const Helper = () => {
-  const specialChars: string[] = [
-    "+",
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "*",
-    "(",
-    ")",
-    "-",
-    "_",
-    "=",
-    "[",
-    "]",
-    "{",
-    "}",
-    "|",
-    "\\",
-    ";",
-    ":",
-    "'",
-    '"',
-    ",",
-    ".",
-    "<",
-    ">",
-    "/",
-    "?",
-  ];
-
-  const chars = "abcdefghijklmnopqrstuvwxyz";
-  const numbers = "0123456789";
-  const charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  const generatePassword = (length: number): string => {
-    let password: string = "";
-
-    for (let i = 0; i < length; i++) {
-      password += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-
-    return password;
-  };
+  const path = BaseDirectory.LocalData;
 
   const hash = (salts: number, password: string) => {
     try {
@@ -68,26 +24,24 @@ const Helper = () => {
     return CryptoJS.AES.encrypt(password, "secret key 123").toString();
   };
 
-  const putUpper = (password: string): string => {
-    return password.charAt(0).toUpperCase() + password.slice(1);
-  };
+  async function makeDir() {
+    await createDir("LockMaster", { dir: path });
+  }
 
-  const putSpecial = (password: string): string => {
-    const passwordArr: string[] = password.split("");
-    const randIndex: number = Math.floor(Math.random() * length); // Choose a random index to replace with a special character
-    passwordArr[randIndex] =
-      specialChars[Math.floor(Math.random() * specialChars.length)];
-    return (password = passwordArr.join(""));
-  };
+  const bigLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const smallLetters = "abcdefghijklmnopqrstuvwxyz";
+  const nums = "0123456789";
+  const specialChars = "!@#$%^&*()_+{}[];:<>,.?/~`|\\";
 
   return {
     specialChars,
+    bigLetters,
+    smallLetters,
+    nums,
     hash,
-    generatePassword,
-    putUpper,
-    putSpecial,
     decrypt,
     encrypt,
+    makeDir
   };
 };
 
