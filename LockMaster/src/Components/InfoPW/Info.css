@@ -1,0 +1,16 @@
+.info-box{
+    border: solid 1px grey;
+    border-radius: 12px;
+    padding: 5px;
+    width: 25%;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-box p {
+    font-size: small;
+    line-height: normal;
+}

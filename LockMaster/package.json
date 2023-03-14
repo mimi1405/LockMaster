@@ -10,17 +10,25 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.2.0",
+    "antd": "^5.3.1",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "bcryptjs-react": "^2.4.6",
+    "fs": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@tauri-apps/api": "^1.2.0"
+    "react-icons": "^4.8.0",
+    "react-router": "^6.9.0",
+    "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^1.2.3",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^3.0.0",
     "typescript": "^4.6.4",
-    "vite": "^4.0.0",
-    "@tauri-apps/cli": "^1.2.2"
+    "vite": "^4.0.0"
   }
 }
