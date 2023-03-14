@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FcSettings } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import "./CNP.css";
-import { InputNumber } from "antd";
-import { Checkbox } from "antd";
+import { Checkbox, InputNumber } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import useCNP from "./Hooks/useCNP";
+import { number } from "prop-types";
+import NumberInput from "../../Components/NumberInput/NumberInput";
 
 interface CreateNewPasswordProps {}
 
 const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
-  /* const { savePassword } = useCNP(); */
+  const [generated, setGenerated] = useState(false);
 
-  const [length, setLength] = useState<Number | null>();
+  useEffect(() => {
+    setGenerated(false);
+  }, [generated]);
+
+  const { createPassword } = useCNP();
+
+  const [length, setLength] = useState<number>(Number);
+
+  const [pw, setPw] = useState("");
+
+  const createPw = () => {
+    let password = createPassword(
+      allSmallChecked,
+      firstLetterBig,
+      withSpecialChar,
+      length
+    );
+    setPw(password);
+    setGenerated(true);
+  };
 
   const [disableFirstLetterBig, setDisableFirstLetterBig] = useState(false);
   const [disableAllSmall, setDisableAllSmall] = useState(false);
@@ -69,14 +89,9 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
           <h1>Create new password</h1>
         </div>
         <div className="bottom">
-          <InputNumber
-            min={3}
-            max={20}
-            addonAfter={<FcSettings />}
-            placeholder="password length"
-            onChange={setLength}
-          />
-          <p>Includes:</p>
+          <p>{length}</p>
+          <NumberInput min={3} max={20} onChange={setLength} />
+          <p>*Includes:</p>
           <div className="checks">
             <Checkbox onChange={onChangeSpecialChar}>
               special character
@@ -92,7 +107,11 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
             </Checkbox>
           </div>
 
-          <button  className="generate_btn">generate</button>
+          <p>{pw}</p>
+
+          <button onClick={() => createPw()} className="generate_btn">
+            generate
+          </button>
         </div>
       </div>
     </>

@@ -15,6 +15,7 @@
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "bcryptjs-react": "^2.4.6",
+    "crypto-js": "^4.1.1",
     "fs": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3",
+    "@types/crypto-js": "^4.1.1",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",

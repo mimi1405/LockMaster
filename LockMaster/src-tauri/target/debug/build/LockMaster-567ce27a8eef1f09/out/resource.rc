@@ -1,21 +1,21 @@
 #pragma code_page(65001)
 1 VERSIONINFO
-FILEOS 0x40004
-FILETYPE 0x1
-FILESUBTYPE 0x0
 FILEFLAGSMASK 0x3f
+FILESUBTYPE 0x0
 FILEVERSION 0, 0, 0, 0
+FILETYPE 0x1
 PRODUCTVERSION 0, 0, 0, 0
+FILEOS 0x40004
 FILEFLAGS 0x0
 {
 BLOCK "StringFileInfo"
 {
 BLOCK "000004b0"
 {
-VALUE "FileDescription", "LockMaster"
-VALUE "ProductName", "LockMaster"
-VALUE "ProductVersion", "0.0.0"
 VALUE "FileVersion", "0.0.0"
+VALUE "ProductName", "LockMaster"
+VALUE "FileDescription", "LockMaster"
+VALUE "ProductVersion", "0.0.0"
 }
 }
 BLOCK "VarFileInfo" {
