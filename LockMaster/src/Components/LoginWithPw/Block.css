@@ -1,0 +1,19 @@
+.block-box {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border: solid 1px grey;
+    border-radius: 10px;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+}
+.log-text {
+    font-size: medium;
+    margin-right: 20px;
+}
+.pw-text {
+    font-size: medium;
+}

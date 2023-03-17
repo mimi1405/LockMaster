@@ -29,6 +29,9 @@
         "renameFile": true,
         "exists": true,
         "scope": ["**"]
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

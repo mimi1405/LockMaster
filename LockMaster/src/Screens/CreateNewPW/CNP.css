@@ -50,6 +50,7 @@
     flex-direction: row;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 500;
+    margin-top: 20px;
 }
 
 .generate_btn{
