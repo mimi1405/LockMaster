@@ -18,21 +18,26 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
     setGenerated(false);
   }, [generated]);
 
-  const { generatePassword } = useCNP();
+  const { generatePassword, readPws } = useCNP();
 
   const [length, setLength] = useState<number>(Number);
 
   const [pw, setPw] = useState("");
+  const [login, setLogin] = useState("Alte kanti");
+  const [obje, setObje] = useState([Object]);
 
-  const createPw = () => {
-    let password = generatePassword(
+  const createPw = async () => {
+    let password = await generatePassword(
       length,
       withBigLetters,
       withSmallLetters,
       withNumbers,
-      withSpecialChar
+      withSpecialChar,
+      login
     );
-    setPw(password);
+    setPw(await readPws());
+    setObje(JSON.parse(pw));
+    console.log(obje);
     setGenerated(true);
   };
 
@@ -85,7 +90,20 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
           <h1>Create new password</h1>
         </div>
         <div className="bottom">
-          <h2>{pw}</h2>
+          {obje.map((items: any): any => {
+            let newItem = {
+              pw: items.pw,
+              login: items.login,
+            };
+            return (
+              <>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <p>{newItem.pw}</p>
+                  <p>{newItem.login}</p>
+                </div>
+              </>
+            );
+          })}
           <p style={{ fontSize: "xx-small" }}>3-20</p>
           <NumberInput min={3} max={20} onChange={setLength} />
           <FcSettings size={30} />

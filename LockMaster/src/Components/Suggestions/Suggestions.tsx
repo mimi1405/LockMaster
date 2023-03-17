@@ -12,7 +12,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({}) => {
       <div className="suggestions-container">
         <h3>Suggestions for today</h3>
         <div>
-          <Suggestion title="Show passwords" path="/" />
+          <Suggestion title="Show passwords" path="/passwords" />
           <Suggestion title="Create new password" path="/cnp" />
         </div>
       </div>

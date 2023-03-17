@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import bcryptjs from "bcryptjs-react";
 import * as CryptoJs from "crypto-js";
-import { createDir, BaseDirectory } from "@tauri-apps/api/fs";
+import {
+  createDir,
+  BaseDirectory,
+  writeTextFile,
+  readTextFile,
+  readDir,
+  exists,
+} from "@tauri-apps/api/fs";
+import { path } from "@tauri-apps/api";
+import { invoke } from "@tauri-apps/api";
 
 const Helper = () => {
-  const path = BaseDirectory.LocalData;
+
+  const dirPath = BaseDirectory.LocalData;
+  const filePath = "./LockMaster/pws.json";
+
+  const readPws = async (): Promise<string> => {
+    let pwsContent = "";
+    try {
+      pwsContent = await readTextFile(filePath, { dir: dirPath });
+    } catch (err: any) {
+      console.error(err);
+    }
+    return pwsContent;
+  };
+
+  const createPws = async (passwords: string) => {
+    try {
+      await writeTextFile(filePath, passwords, {
+        dir: dirPath,
+      });
+    } catch (err: any) {
+      console.error(err);
+    }
+  };
 
   const hash = (salts: number, password: string) => {
     try {
@@ -25,8 +56,20 @@ const Helper = () => {
   };
 
   async function makeDir() {
-    await createDir("LockMaster", { dir: path });
+    try {
+      if (!(await exists("LockMaster", { dir: dirPath }))) {
+        await createDir("LockMaster", { dir: dirPath });
+      }
+    } catch (err: any) {
+      console.log(err);
+    }
   }
+
+/*   async function countIds(){
+    array.forEach(element => {
+      
+    });
+  } */
 
   const bigLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const smallLetters = "abcdefghijklmnopqrstuvwxyz";
@@ -41,7 +84,9 @@ const Helper = () => {
     hash,
     decrypt,
     encrypt,
-    makeDir
+    makeDir,
+    createPws,
+    readPws
   };
 };
 

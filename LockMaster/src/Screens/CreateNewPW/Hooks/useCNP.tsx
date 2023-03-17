@@ -1,7 +1,5 @@
 import React from "react";
-import { writeTextFile, BaseDirectory } from "@tauri-apps/api/fs";
 import Helper from "../Helper/Helper";
-import { fs } from "@tauri-apps/api";
 
 const useCNP = () => {
   const {
@@ -12,17 +10,29 @@ const useCNP = () => {
     smallLetters,
     nums,
     specialChars,
-    makeDir
+    makeDir,
+    createPws,
+    readPws,
   } = Helper();
 
+  async function prepareJson(password: string, login: string) {
+    let array: object[] = JSON.parse(await readPws());
+    let idCount: number = 0;
+    array.forEach((element) => {
+      idCount++;
+    });
+    array.push({ id: idCount, pw: password, login: login });
+    return JSON.stringify(array);
+  }
 
-  function generatePassword(
+  async function generatePassword(
     length: number,
     withBigLetters: boolean,
     withSmallLetters: boolean,
     withNums: boolean,
-    withSpecialChars: boolean
-  ): string {
+    withSpecialChars: boolean,
+    login: string
+  ) {
     let validChars = "";
     if (withBigLetters) validChars += bigLetters;
     if (withSmallLetters) validChars += smallLetters;
@@ -34,11 +44,12 @@ const useCNP = () => {
       password += validChars.charAt(randomIndex);
     }
     makeDir();
-    return password;
+    createPws(await prepareJson(password, login));
   }
 
   return {
     generatePassword,
+    readPws,
   };
 };
 

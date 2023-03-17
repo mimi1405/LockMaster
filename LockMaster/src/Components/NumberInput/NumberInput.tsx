@@ -6,6 +6,7 @@ interface NumberInputProps {
   max: number;
   onChange: Function;
 }
+
 const NumberInput: React.FC<NumberInputProps> = ({ min, max, onChange }) => {
   return (
     <>
