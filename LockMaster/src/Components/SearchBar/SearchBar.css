@@ -1,0 +1,18 @@
+.text-bar{
+    width: auto;
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 5px;
+    font-size: medium;
+}
+
+.text-bar:hover{
+    border: royalblue solid .1px;
+}
+
+.select-bar{
+    width: auto;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: medium;
+}

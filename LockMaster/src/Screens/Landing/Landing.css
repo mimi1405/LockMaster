@@ -1,12 +1,3 @@
-.landing-container{
-    padding: 5px;
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 10% 80%;
-}
-
 .title-box{
     justify-self:flex-start;
     align-self: center;
@@ -14,6 +5,7 @@
     flex-direction: row;
     justify-items: center;
     align-items: center;
+    padding-left: 10px;
 }
 
 .landing-content{
@@ -21,5 +13,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 }
 

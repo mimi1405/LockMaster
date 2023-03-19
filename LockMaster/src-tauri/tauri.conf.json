@@ -37,11 +37,11 @@
     "bundle": {
       "active": true,
       "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
+        "icons/encrypted-32x32.png",
+        "icons/encrypted-120x120.png",
+        "icons/encrypted-144x144.png",
+        "icons/encrypted.icns",
+        "icons/encrypted.ico"
       ],
       "identifier": "com.tauri.dev",
       "targets": "all"

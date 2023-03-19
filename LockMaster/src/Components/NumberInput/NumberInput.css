@@ -1,14 +1,14 @@
 .input {
-  border: 1px solid grey;
+  border: 1px solid transparent;
   border-radius: 10px;
   padding: 10px;
   font-size: larger;
   transition: all 0.5s ease-in;
-  margin-bottom: 25px;
+  margin-right: 20px;
 }
 
 .input:hover {
-  border: 1px solid royalblue;
+  border: 1px solid red;
 }
 
 .input::before {
