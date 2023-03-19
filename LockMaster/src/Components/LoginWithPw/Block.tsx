@@ -1,20 +1,20 @@
-import React from 'react';
-import './Block.css'
+import React from "react";
+import "./Block.css";
 
 interface BlockProps {
-    login: string;
-    pw: string
+  login: string;
+  pw: string;
 }
 
 const Block: React.FC<BlockProps> = ({ login, pw }) => {
-    return (
-        <>
-        <div className="block-box">
-            <p className='log-text'>{login}</p>
-            <p className='pw-text'>{pw}</p>
-        </div>
-        </>
-    );
+  return (
+    <>
+      <div className="block-box">
+        <p className="pw-text">Password: {pw}</p>
+        <p className="log-text">For: {login}</p>
+      </div>
+    </>
+  );
 };
 
 export default Block;

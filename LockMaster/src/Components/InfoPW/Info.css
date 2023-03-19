@@ -2,8 +2,8 @@
     border: solid 1px grey;
     border-radius: 12px;
     padding: 5px;
-    width: 25%;
-    margin: 25px;
+    width: 50%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +11,8 @@
 }
 
 .info-box p {
-    font-size: small;
+    font-size: large;
     line-height: normal;
+    text-align: center;
+    text-justify:auto;
 }

@@ -1,6 +1,6 @@
 .cnp-container{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 20% 80%;
@@ -8,7 +8,7 @@
 
 .upper{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -53,6 +53,12 @@
     margin-top: 20px;
 }
 
+.checks .check{
+    color: white;
+}
+
+
+
 .generate_btn{
     margin-top: 25px;
     border: 1px grey solid;
@@ -68,4 +74,12 @@
 
 .generate_btn:hover{
    font-size: larger;
+}
+
+.inputs{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
 }

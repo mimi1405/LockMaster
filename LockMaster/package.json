@@ -10,6 +10,9 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@mantine/core": "^6.0.2",
+    "@mantine/hooks": "^6.0.2",
     "@tauri-apps/api": "^1.2.0",
     "antd": "^5.3.1",
     "bcrypt": "^5.1.0",
