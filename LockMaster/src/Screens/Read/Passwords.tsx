@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
 import { BiCommentAdd } from "react-icons/bi";
-import usePasswords from "./Hooks/usePasswords";
-import { readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
 import Block from "../../Components/LoginWithPw/Block";
-import "./Passwords.css";
+import { BaseDirectory, readTextFile } from "@tauri-apps/api/fs";
 import SearchBar from "../../Components/SearchBar/SearchBar";
+import usePasswords from "./Hooks/usePasswords";
+import "./Passwords.css";
+import deletePassword from "./Hooks/deletePasswords";
 
-const Passwords = () => {
+interface Password {
+  [key: string]: string;
+  id: string;
+  login: string;
+  pw: string;
+}
+
+const TestPasswords = () => {
   const dirPath = BaseDirectory.LocalData;
   const filePath = "./LockMaster/pws.json";
-  const [views, setViews] = useState([Object]);
-  const [passwords, setPasswords] = useState<any>("");
-  const [load, setLoad] = useState(false);
+  const [views, setViews] = useState<Password[]>([]);
+  const [passwords, setPasswords] = useState<string>("");
+  const [load, setLoad] = useState<boolean>(false);
+  const [filteredViews, setFilteredViews] = useState<Password[]>(views);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filterBy, setFilterBy] = useState<string>("login");
   const { readPws } = usePasswords();
 
   useEffect(() => {
@@ -21,7 +30,9 @@ const Passwords = () => {
       const read = async () => {
         try {
           setPasswords(await readTextFile(filePath, { dir: dirPath }));
-          let array: ObjectConstructor = JSON.parse(await readPws());
+          let array: Password[] = JSON.parse(await readPws());
+          console.log("hello");
+          console.log(array);
           setViews(array);
         } catch (err: any) {
           console.error(err);
@@ -31,32 +42,51 @@ const Passwords = () => {
     } catch (err: any) {
       console.error(err);
     }
-  }, []);
 
-  useEffect(() => {
     setLoad(false);
-  }, [load]);
+
+    setFilteredViews(
+      views.filter((item: any) =>
+        item[filterBy]
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [load, views, searchTerm, filterBy]);
+
+  const handleSearchTermChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleFilterByChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setFilterBy(event.target.value);
+  };
 
   return (
     <>
       <div className="cnp-container">
         <div className="upper">
-          <h1>Passwords - overview</h1>
+          <h1>Passwords - search</h1>
+          <SearchBar<Password>
+            data={views}
+            onFilter={setFilteredViews}
+            searchTerm={searchTerm}
+            onSearchTermChange={handleSearchTermChange}
+            filterBy={["login", "pw"]}
+            onFilterByChange={handleFilterByChange}
+          />
         </div>
+
         <div className="pw-cont">
-          
           {passwords ? (
-            views.map((items: any): any => {
-              let newItem = {
-                pw: items.pw,
-                login: items.login,
-              };
-              return (
-                <>
-                  <Block login={newItem.login} pw={newItem.pw} />
-                </>
-              );
-            })
+            filteredViews.map((item: Password, index) => (
+              <Block id={Number.parseInt(item.id)} key={index} login={item.login} pw={item.pw} deletePassword={deletePassword}/>
+            ))
           ) : (
             <>
               <h1>Du hast derzeit keine Passwörter...</h1>
@@ -69,4 +99,4 @@ const Passwords = () => {
   );
 };
 
-export default Passwords;
+export default TestPasswords;

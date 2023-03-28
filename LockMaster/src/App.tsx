@@ -4,7 +4,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import { BiMoon } from "react-icons/bi";
 import { BiSun } from "react-icons/bi";
 import CreateNewPassword from "./Screens/CreateNewPW/CreateNewPassword";
-import Passwords from "./Screens/Read/Passwords";
 import {
   AppShell,
   Navbar,
@@ -21,7 +20,7 @@ import { useColorScheme } from "@mantine/hooks";
 import { AiFillLock } from "react-icons/ai";
 import "./styles.css";
 import NavButton from "./Components/NavButton/NavButton";
-import TestPasswords from "./Screens/Read/TestPasswords";
+import TestPasswords from "./Screens/Read/Passwords";
 
 const App = () => {
   const theme = "dark";

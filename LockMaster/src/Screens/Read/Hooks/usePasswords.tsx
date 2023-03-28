@@ -1,4 +1,3 @@
-import React from "react";
 import { readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
 
 const usePasswords = () => {
