@@ -1,85 +1,63 @@
-.cnp-container{
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 20% 80%;
+.cnp-container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 20% 80%;
 }
 
-.upper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.upper h1{
-    cursor: not-allowed;
+.upper h1 {
+  cursor: not-allowed;
 }
 
-.back_btn{
-    color: black;
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    flex-direction: row;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 25px;
-    border: grey 1px solid;
-    transition: all .5s ease-in-out;
+.bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.back_btn:hover{
-    font-size: larger;
-    border: royalblue 2px solid;
-
+.checks {
+  display: flex;
+  flex-direction: row;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 500;
+  margin-top: 20px;
 }
 
-.bottom{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.checks .check {
+  color: white;
+  font-size: 1.5rem;
 }
 
-.checks{
-    display: flex;
-    flex-direction: row;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 500;
-    margin-top: 20px;
+.generate_btn {
+  margin-top: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+  font-size: larger;
+  border: 1px solid white;
 }
 
-.checks .check{
-    color: white;
+.generate_btn:hover {
+  background-color: rgb(40, 40, 52);
+  border: solid 1px royalblue;
 }
 
-
-
-.generate_btn{
-    margin-top: 25px;
-    border: 1px grey solid;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: green;
-    opacity: .65;
-    padding: 10px;
-    color: black;
-    transition: all .5s ease-in-out;
-    font-size: medium;
-}
-
-.generate_btn:hover{
-   font-size: larger;
-}
-
-.inputs{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto;
-    justify-content: center;
-    align-items: center;
+.inputs {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
 }

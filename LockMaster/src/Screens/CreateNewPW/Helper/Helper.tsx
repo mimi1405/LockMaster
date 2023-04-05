@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import bcryptjs from "bcryptjs-react";
-import * as CryptoJs from "crypto-js";
+import CryptoJs from "crypto-js";
 import {
   createDir,
   BaseDirectory,
@@ -46,13 +46,13 @@ const Helper = () => {
   };
 
   const decrypt = (enccrypted: string) => {
-    let bytes = CryptoJS.AES.decrypt(enccrypted, "secret key 123");
-    let originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+    let bytes = CryptoJs.AES.decrypt(enccrypted, "secret key 123");
+    let originalPassword = bytes.toString(CryptoJs.enc.Utf8);
     return originalPassword;
   };
 
   const encrypt = (password: string) => {
-    return CryptoJS.AES.encrypt(password, "secret key 123").toString();
+    return CryptoJs.AES.encrypt(password, "secret key 123").toString();
   };
 
   async function makeDir() {

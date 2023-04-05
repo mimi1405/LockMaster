@@ -1,5 +1,5 @@
 import React from "react";
-import { readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
+import { readTextFile, BaseDirectory, writeFile, writeTextFile } from "@tauri-apps/api/fs";
 
 const usePasswords = () => {
   const dirPath = BaseDirectory.LocalData;
@@ -14,6 +14,8 @@ const usePasswords = () => {
     }
     return pwsContent;
   };
+
+  
 
   return {
     readPws,

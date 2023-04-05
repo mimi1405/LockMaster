@@ -6,7 +6,6 @@ import "./CNP.css";
 import { Checkbox, Input, InputNumber } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import useCNP from "./Hooks/useCNP";
-import { number } from "prop-types";
 import NumberInput from "../../Components/NumberInput/NumberInput";
 
 interface CreateNewPasswordProps {}
@@ -81,20 +80,29 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
     <>
       <div className="cnp-container">
         <div className="upper">
-          <h1>Create new password</h1>
+          <p>How to:</p>
+          <ol>
+            <li>Set your preffered length</li>
+            <li>Mark the options u like</li>
+            <li>Generate your password until you like it</li>
+            <li>Give it a corresponding login</li>
+            <li>Save it!</li>
+          </ol>
         </div>
         <div className="bottom">
-          <p>{pw}</p>
+          <strong>
+            <p>{pw ? pw : "Password..."}</p>
+          </strong>
           <p>for: {login}</p>
-          <p style={{ fontSize: "xx-small" }}>3-20</p>
+          <p style={{ fontSize: "xx-small" }}>size: 3-20</p>
           <div className="inputs">
             <FcSettings size={15} />
             <NumberInput min={3} max={20} onChange={setLength} />
-
             <Input
               onChange={(e) => setLogin(e.target.value)}
               type="text"
               value={login}
+              placeholder="example: BBB Login"
             />
             <FcSettings size={15} />
           </div>
@@ -103,9 +111,15 @@ const CreateNewPassword: React.FC<CreateNewPasswordProps> = ({}) => {
             <Checkbox className="check" onChange={onChangeSpecialChar}>
               special characters
             </Checkbox>
-            <Checkbox className="check" onChange={onChangeFirstLetterBig}>big letters</Checkbox>
-            <Checkbox className="check" onChange={onChangeAllSmall}>small letters</Checkbox>
-            <Checkbox className="check" onChange={onChangeNumbers}>numbers</Checkbox>
+            <Checkbox className="check" onChange={onChangeFirstLetterBig}>
+              big letters
+            </Checkbox>
+            <Checkbox className="check" onChange={onChangeAllSmall}>
+              small letters
+            </Checkbox>
+            <Checkbox className="check" onChange={onChangeNumbers}>
+              numbers
+            </Checkbox>
           </div>
 
           <button onClick={() => createPw()} className="generate_btn">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './SearchBar.css';
+import "./SearchBar.css";
 
 interface SearchBarProps<T> {
   data: T[];
@@ -42,10 +42,16 @@ const SearchBar = <T extends Record<string, unknown>>({
         value={searchTerm}
         onChange={onSearchTermChange}
         className="text-bar"
+        autoFocus
       />
-      <select className="select-bar" value={selectedFilter} onChange={handleFilterChange}>
+      filter by: {""}
+      <select
+        className="select-bar"
+        value={selectedFilter}
+        onChange={handleFilterChange}
+      >
         {filterBy.map((field) => (
-          <option key={field} value={field}>
+          <option className="options" key={field} value={field}>
             {field}
           </option>
         ))}
