@@ -1,25 +1,19 @@
 #pragma code_page(65001)
 1 VERSIONINFO
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 FILEFLAGS 0x0
 FILESUBTYPE 0x0
 FILEOS 0x40004
+=======
+>>>>>>> Stashed changes
 FILEVERSION 0, 0, 0, 0
 FILETYPE 0x1
-PRODUCTVERSION 0, 0, 0, 0
-FILEFLAGSMASK 0x3f
-=======
 FILESUBTYPE 0x0
-FILETYPE 0x1
-FILEFLAGSMASK 0x3f
 FILEFLAGS 0x0
-PRODUCTVERSION 0, 0, 0, 0
-<<<<<<< HEAD
->>>>>>> 1.0-setup
-=======
-FILEVERSION 0, 0, 0, 0
 FILEOS 0x40004
+<<<<<<< Updated upstream
 >>>>>>> 1.0-setup
 =======
 FILEVERSION 0, 0, 0, 0
@@ -30,23 +24,26 @@ FILETYPE 0x1
 FILESUBTYPE 0x0
 FILEFLAGS 0x0
 >>>>>>> 1.0-setup
+=======
+PRODUCTVERSION 0, 0, 0, 0
+FILEFLAGSMASK 0x3f
+>>>>>>> Stashed changes
 {
 BLOCK "StringFileInfo"
 {
 BLOCK "000004b0"
 {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-VALUE "ProductName", "LockMaster"
-VALUE "FileDescription", "LockMaster"
-VALUE "FileVersion", "0.0.0"
-VALUE "ProductVersion", "0.0.0"
 =======
+>>>>>>> Stashed changes
+VALUE "ProductName", "LockMaster"
 VALUE "FileVersion", "0.0.0"
 VALUE "ProductVersion", "0.0.0"
-VALUE "ProductName", "LockMaster"
 VALUE "FileDescription", "LockMaster"
+<<<<<<< Updated upstream
 >>>>>>> 1.0-setup
 =======
 VALUE "FileDescription", "LockMaster"
@@ -60,6 +57,8 @@ VALUE "FileVersion", "0.0.0"
 VALUE "ProductName", "LockMaster"
 VALUE "FileDescription", "LockMaster"
 >>>>>>> 1.0-setup
+=======
+>>>>>>> Stashed changes
 }
 }
 BLOCK "VarFileInfo" {
