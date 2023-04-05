@@ -16,3 +16,8 @@
     border-radius: 10px;
     font-size: medium;
 }
+
+.select-bar .options{
+    border-radius: 12px;
+    font-size: medium;
+}

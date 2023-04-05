@@ -17,9 +17,9 @@ const useCNP = () => {
 
   async function prepareJson(password: string, login: string) {
     let content = await readPws();
-    if(!content){
-      return JSON.stringify([{id: 1, pw: password, login: login}])
-    }else{
+    if (!content) {
+      return JSON.stringify([{ id: 1, pw: password, login: login }]);
+    } else {
       let array: object[] = JSON.parse(content);
       let idCount: number = 1;
       array.forEach((element) => {
@@ -28,9 +28,6 @@ const useCNP = () => {
       array.push({ id: idCount++, pw: password, login: login });
       return JSON.stringify(array);
     }
-    
-  
-    
   }
 
   function generatePassword(
@@ -54,7 +51,8 @@ const useCNP = () => {
   }
 
   async function savePassword(password: string, login: string) {
-    let passwords = await prepareJson(password, login);
+    let encrypted = encrypt(password);
+    let passwords = await prepareJson(encrypted, login);
     await createPws(passwords);
   }
 

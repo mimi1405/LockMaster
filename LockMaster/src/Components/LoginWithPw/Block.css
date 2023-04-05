@@ -1,6 +1,6 @@
 .block-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 8px;
   border: solid .1px royalblue;
   border-radius: 12px;
@@ -8,6 +8,12 @@
   align-items: center;
   width: auto;
   margin: 5px;
+  text-align: center;
+}
+
+.password-data{
+  display: flex;
+  flex-direction: row;
 }
 .log-text {
   font-size: medium;
@@ -17,7 +23,25 @@
   margin-right: 5%;
 }
 
+<<<<<<< HEAD
 .id-text {
   font-size: medium;
   margin-right: 5%;
 }
+=======
+.functionality svg{
+  margin: 5px;
+}
+.copy-btn{
+  cursor: copy;
+}
+.copy-btn:hover{
+  color: royalblue;
+}
+.delete-btn{
+  cursor: pointer;
+}
+.delete-btn:hover{
+  color: red;
+}
+>>>>>>> 1.0-setup
