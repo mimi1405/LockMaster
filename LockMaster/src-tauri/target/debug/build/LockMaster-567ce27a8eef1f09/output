@@ -14,5 +14,5 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 RC Error:
 
 ------
-cargo:rustc-link-search=native=C:\deskapps\LockMaster\LockMaster\LockMaster\src-tauri\target\debug\build\LockMaster-567ce27a8eef1f09\out
+cargo:rustc-link-search=native=c:\deskapps\LockMaster\LockMaster\LockMaster\src-tauri\target\debug\build\LockMaster-567ce27a8eef1f09\out
 cargo:rustc-link-lib=dylib=resource
