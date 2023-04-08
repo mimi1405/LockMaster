@@ -43,7 +43,7 @@
         "icons/encrypted.icns",
         "icons/encrypted.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "tauri.conf.json",
       "targets": "all"
     },
     "security": {
