@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Landing from "./Screens/Landing/Landing";
 import { Routes, Route } from "react-router-dom";
 import CreateNewPassword from "./Screens/CreateNewPW/CreateNewPassword";
-<<<<<<< HEAD
 import {
   AppShell,
   Navbar,
@@ -20,14 +19,9 @@ import { AiFillLock } from "react-icons/ai";
 import "./styles.css";
 import NavButton from "./Components/NavButton/NavButton";
 import TestPasswords from "./Screens/Read/Passwords";
-=======
-import { AppShell, Navbar, Header, MantineProvider } from "@mantine/core";
-import { AiFillLock } from "react-icons/ai";
 import "./styles.css";
-import NavButton from "./Components/NavButton/NavButton";
 import Passwords from "./Screens/Read/Passwords";
 import Protection from "./Screens/Protection/Protection";
->>>>>>> 1.0-setup
 
 const App = () => {
   return (

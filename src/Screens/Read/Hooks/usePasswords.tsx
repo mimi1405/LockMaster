@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import { readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
-=======
-import React from "react";
-import { readTextFile, BaseDirectory, writeFile, writeTextFile } from "@tauri-apps/api/fs";
->>>>>>> 1.0-setup
 
 const usePasswords = () => {
   const dirPath = BaseDirectory.LocalData;

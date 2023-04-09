@@ -1,32 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { BiCommentAdd } from "react-icons/bi";
 import Block from "../../Components/LoginWithPw/Block";
-<<<<<<< HEAD
-import { BaseDirectory, readTextFile } from "@tauri-apps/api/fs";
-import SearchBar from "../../Components/SearchBar/SearchBar";
-import usePasswords from "./Hooks/usePasswords";
-import "./Passwords.css";
-import deletePassword from "./Hooks/deletePasswords";
-
-interface Password {
-  [key: string]: string;
-  id: string;
-  login: string;
-  pw: string;
-=======
 import { BaseDirectory, readTextFile, writeTextFile } from "@tauri-apps/api/fs";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import usePasswords from "./Hooks/usePasswords";
 import "./Passwords.css";
+import deletePassword from "./Hooks/deletePasswords";
 import CryptoJs from "crypto-js";
-import { Skeleton } from "antd";
 
 interface Password {
   [key: string]: string;
+  id: string;
   login: string;
   pw: string;
-  id: string;
->>>>>>> 1.0-setup
 }
 
 const TestPasswords = () => {
@@ -34,15 +20,12 @@ const TestPasswords = () => {
   const filePath = "./LockMaster/pws.json";
   const [views, setViews] = useState<Password[]>([]);
   const [passwords, setPasswords] = useState<string>("");
-<<<<<<< HEAD
   const [load, setLoad] = useState<boolean>(false);
-=======
-  const [load, setLoad] = useState<boolean>(true);
-  const [del, setDel] = useState<boolean>(true);
->>>>>>> 1.0-setup
   const [filteredViews, setFilteredViews] = useState<Password[]>(views);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filterBy, setFilterBy] = useState<string>("login");
+  const [del, setDel] = useState(false);
+
   const { readPws } = usePasswords();
 
   const decrypt = (enccrypted: string) => {
@@ -83,11 +66,8 @@ const TestPasswords = () => {
         try {
           setPasswords(await readTextFile(filePath, { dir: dirPath }));
           let array: Password[] = JSON.parse(await readPws());
-<<<<<<< HEAD
           console.log("hello");
           console.log(array);
-=======
->>>>>>> 1.0-setup
           setViews(array);
           setDel(false);
           setLoad(false);
@@ -101,13 +81,6 @@ const TestPasswords = () => {
     }
 
     setLoad(false);
-<<<<<<< HEAD
-
-=======
-  }, [load, del]);
-
-  useEffect(() => {
->>>>>>> 1.0-setup
     setFilteredViews(
       views.filter((item: any) =>
         item[filterBy]
@@ -116,11 +89,7 @@ const TestPasswords = () => {
           .includes(searchTerm.toLowerCase())
       )
     );
-<<<<<<< HEAD
   }, [load, views, searchTerm, filterBy]);
-=======
-  }, [views, searchTerm, filterBy]);
->>>>>>> 1.0-setup
 
   const handleSearchTermChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -136,15 +105,8 @@ const TestPasswords = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <div className="cnp-container">
         <div className="upper">
-=======
-      {load ? (
-        <Skeleton />
-      ) : (
-        <div className="cnp-container">
->>>>>>> 1.0-setup
           <h1>Passwords - search</h1>
           <SearchBar<Password>
             data={views}
@@ -154,7 +116,6 @@ const TestPasswords = () => {
             filterBy={["login", "pw"]}
             onFilterByChange={handleFilterByChange}
           />
-<<<<<<< HEAD
         </div>
 
         <div className="pw-cont">
@@ -170,28 +131,6 @@ const TestPasswords = () => {
           )}
         </div>
       </div>
-=======
-          <div className="passwords-listing">
-            {passwords ? (
-              filteredViews.map((item: Password) => (
-                <Block
-                  id={Number.parseInt(item.id)}
-                  key={item.login}
-                  login={item.login}
-                  pw={decrypt(item.pw)}
-                  deletePassword={deletePassword}
-                />
-              ))
-            ) : (
-              <>
-                <h1>Du hast derzeit keine Passwörter...</h1>
-                <BiCommentAdd size={50} />
-              </>
-            )}
-          </div>
-        </div>
-      )}
->>>>>>> 1.0-setup
     </>
   );
 };
