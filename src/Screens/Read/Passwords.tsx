@@ -121,7 +121,7 @@ const TestPasswords = () => {
         <div className="pw-cont">
           {passwords ? (
             filteredViews.map((item: Password, index) => (
-              <Block id={Number.parseInt(item.id)} key={index} login={item.login} pw={item.pw} deletePassword={deletePassword}/>
+              <Block id={Number.parseInt(item.id)} key={index} login={item.login} pw={decrypt(item.pw)} deletePassword={deletePassword}/>
             ))
           ) : (
             <>

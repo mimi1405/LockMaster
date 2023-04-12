@@ -23,25 +23,27 @@
   margin-right: 5%;
 }
 
-<<<<<<< HEAD
 .id-text {
   font-size: medium;
   margin-right: 5%;
 }
-=======
-.functionality svg{
-  margin: 5px;
+
+.buttons{
 }
-.copy-btn{
-  cursor: copy;
-}
-.copy-btn:hover{
-  color: royalblue;
-}
-.delete-btn{
+.delete{
+  color: white;
   cursor: pointer;
+  padding: 5px;
 }
-.delete-btn:hover{
+.copy{
+  color: white;
+  cursor: copy;
+  padding: 5px;
+}
+
+.delete:hover{
   color: red;
 }
->>>>>>> 1.0-setup
+.copy:hover{
+  color: royalblue;
+}
